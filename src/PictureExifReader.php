@@ -6,7 +6,7 @@ class PictureExifReader
     /**
      * @var string
      */
-    private $picturesDirectory;
+    private $picturesDir;
 
     /**
      * @var array
@@ -26,20 +26,20 @@ class PictureExifReader
     /**
      * @var array
      */
-    private $flatExifOutput;
+    private $flattenExif;
 
     /**
      * @var array
      */
-    private $chosenDataArray;
+    private $chosenData;
 
 
     /**
      * @param string $pictureDirectory
      */
-    public function setPicturesDirectory($pictureDirectory): void
+    public function setPicturesDirectory($picturesDir): void
     {
-        $this->picturesDirectory = $pictureDirectory;
+        $this->picturesDir = $picturesDir;
     }
 
 
@@ -47,9 +47,9 @@ class PictureExifReader
      * Metoda pobiera wszystkie pliki z katalogu i usuwa pliki o rozrzerzeniach nieobługiwanych przez "exif_read_data"
      * @return array
      */
-    private function getAcceptedFiles(): array
+    private function getOnlyAcceptedFiles(): array
     {
-        $fileList = new \DirectoryIterator($this->picturesDirectory);
+        $fileList = new \DirectoryIterator($this->picturesDir);
 
         foreach ($fileList as $file) {
             $acceptedFiles[] = $file->getBasename();
@@ -63,20 +63,20 @@ class PictureExifReader
      * Metoda zwraca spłaszczoną tablicę ze wszytkimi danymi exif
      * @return array
      */
-    private function getFullFlattenExif(): array
+    private function getFlattenExif(): array
     {
         $fileExif = [];
-        foreach ($this->getAcceptedFiles() as $file) {
-            $fileExif[] = exif_read_data($this->picturesDirectory . '/' . $file);
+        foreach ($this->getOnlyAcceptedFiles() as $file) {
+            $fileExif[] = exif_read_data($this->picturesDir . '/' . $file);
         }
 
         foreach ($fileExif as $key => $items) {
             foreach (new \RecursiveIteratorIterator(new \RecursiveArrayIterator($items)) as $k => $v) {
                 $flatArray[$k] = $v;
             }
-            $this->flatExifOutput[$key] = $flatArray;
+            $this->flattenExif[$key] = $flatArray;
         }
-        return $this->flatExifOutput;
+        return $this->flattenExif;
     }
 
     /**
@@ -84,12 +84,12 @@ class PictureExifReader
      * @param array $allowed
      * @return array
      */
-    private function keepOnlyChosenElements(array $allowed): array
+    private function getChosenElements(array $allowed): array
     {
-        foreach ($this->getFullFlattenExif() as $key => $value) {
-            $this->chosenDataArray[] = (array_intersect_key($value, array_flip($allowed)));
+        foreach ($this->getFlattenExif() as $key => $value) {
+            $this->chosenData[] = (array_intersect_key($value, array_flip($allowed)));
         }
-        return $this->chosenDataArray;
+        return $this->chosenData;
     }
 
     /**
@@ -99,7 +99,7 @@ class PictureExifReader
     public function getPicturesData(): array
     {
 
-        return $this->keepOnlyChosenElements($this->pictureData);
+        return $this->getChosenElements($this->pictureData);
     }
 
     /**
@@ -109,7 +109,7 @@ class PictureExifReader
     public function getFilesData(): array
     {
 
-        return $this->keepOnlyChosenElements($this->fileData);
+        return $this->getChosenElements($this->fileData);
     }
 
     /**
@@ -119,7 +119,7 @@ class PictureExifReader
     public function getPicturesAndFilesData(): array
     {
         $fullData = (array_merge($this->pictureData, $this->fileData));
-        return $this->keepOnlyChosenElements($fullData);
+        return $this->getChosenElements($fullData);
 
     }
 
