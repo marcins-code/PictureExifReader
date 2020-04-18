@@ -2,7 +2,7 @@
 
 
 include('src/PictureExifReader.php');
-$galleryPath='demo/images/gallery/';
+$galleryPath = 'demo/images/gallery/';
 $pics = new PictureExifReader();
 $pics->setPicturesDirectory($galleryPath);
 $images = $pics->getPicturesAndFilesData();
@@ -32,7 +32,6 @@ function showElement($icon, $title, $element)
     <h1 class="mt-3">Exif reader class demo</h1>
     <hr/>
 
-
     <div id="carouselExampleCaptions" class="carousel slide mb-5" data-ride="carousel">
         <ol class="carousel-indicators">
 
@@ -50,7 +49,7 @@ function showElement($icon, $title, $element)
                 <div class="carousel-item <?php if ($key == 0) {
                     echo 'active';
                 } ?>">
-                    <img src="<?php echo $galleryPath.$image['FileName']; ?> " class="d-block w-100 "
+                    <img src="<?php echo $galleryPath . $image['FileName']; ?> " class="d-block w-100 "
                          alt="<?php echo $image['ImageDescription']; ?>">
                     <div class="carousel-caption d-none d-md-block">
                         <h5><?php echo $image['ImageDescription']; ?></h5>
@@ -83,7 +82,6 @@ function showElement($icon, $title, $element)
             }
             ?>
 
-
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -96,7 +94,8 @@ function showElement($icon, $title, $element)
     </div>
 
     <p>
-           <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
             Show array dump
         </button>
     </p>
