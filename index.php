@@ -8,9 +8,9 @@ $pics->setPicturesDirectory($galleryPath);
 $images = $pics->getPicturesAndFilesData();
 function showElement($icon, $title, $element)
 {
-    if ($element) {
+
         echo '<i class="' . $icon . '"></i> <strong>' . $title . '</strong>: ' . $element;
-    }
+    
 }
 
 ?>

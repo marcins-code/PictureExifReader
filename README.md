@@ -4,7 +4,7 @@ Proper preparation of exif data may avoid a lot of work during creation photos g
 Class `PictureExifReader` gets all pictures from directory and returns array with most useful data for each pictures.
 
 ### Demo
-Download this repository and run index.php to see demo. All pictures are mine are under free licence.
+Download this repository and run index.php to see very basic demo. All pictures are mine are under free licence.
 
 ## Usage
 
