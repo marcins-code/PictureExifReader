@@ -6,6 +6,7 @@ Class `PictureExifReader` gets all pictures from directory and returns array wit
 ### Demo
 Download this repository and run index.php to see very basic demo. All pictures are mine are under free licence.
 
+---
 ## Usage
 
 ```php
