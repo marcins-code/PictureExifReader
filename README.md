@@ -1,2 +1,2 @@
-# PictureExifReader
-Klasa do pobierania danych exfi
+## PictureExifReader
+Even pictires taken by mobile phones containes
