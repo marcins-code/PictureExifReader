@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-## PictureExifReader
-Even pictires taken by mobile phones containes
-=======
 # PictureExifReader
 Even pictures taken by mobile phones contains metadata. There are applications to add/edit exif data for pictures. The best are paid like Adobe Aperture, but free software like AnalogExif can manage exif data as well.
 Proper preparation of exif data may avoid a lot of work during creation photos gallery.
