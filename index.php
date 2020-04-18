@@ -8,7 +8,9 @@ $pics->setPicturesDirectory($galleryPath);
 $images = $pics->getPicturesAndFilesData();
 function showElement($icon, $title, $element)
 {
-    echo '<i class="' . $icon . '"></i> <strong>' . $title . '</strong>: ' . $element;
+    if ($element) {
+        echo '<i class="' . $icon . '"></i> <strong>' . $title . '</strong>: ' . $element;
+    }
 }
 
 ?>
@@ -29,10 +31,10 @@ function showElement($icon, $title, $element)
 </head>
 <body>
 <div class="container">
-    <h1 class="mt-3">Exif reader class demo</h1>
+    <h1 class="mt-3"><i class="far fa-images"></i> Exif reader class demo</h1>
     <hr/>
 
-    <div id="carouselExampleCaptions" class="carousel slide mb-5" data-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide mb-5 mt-5" data-ride="carousel">
         <ol class="carousel-indicators">
 
             <?php foreach ($images as $key => $image) { ?>
@@ -99,7 +101,7 @@ function showElement($icon, $title, $element)
             Show array dump
         </button>
     </p>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse mb-5" id="collapseExample">
         <div class="card card-body">
             <pre>
             <?php var_dump($images); ?>

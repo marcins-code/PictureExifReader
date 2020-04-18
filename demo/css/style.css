@@ -1,3 +1,18 @@
+
+body {
+    background: radial-gradient(ellipse at top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.5) 100%) center top, url('../images/background/page.png');
+    color: #e1e1e1;
+}
+
+hr {
+    border-top: 1px solid rgba(110, 110, 110, .5);
+}
+
+.carousel-inner {
+    border-radius: 20px;
+    box-shadow: 0 0 5px 15px #5f5f5f, 0 0 10px black inset;
+}
+
 .carousel-caption {
     left: 5% !important;
     right: 5% !important;
