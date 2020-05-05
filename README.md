@@ -73,4 +73,4 @@ Joined 2 first results
       'DateTimeOriginal' => string '2019:05:20 22:48:30' (length=19)
       'FocalLength' => string '39/1' (length=4)
 ```
->>>>>>> 52cbe715a690881af015b0ae5c7bd28cd984e4ec
+
